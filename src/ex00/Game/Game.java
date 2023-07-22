@@ -31,8 +31,7 @@ public class Game {
             ShowMaze mazeWindow =
                     new ShowMaze(enemiesCount, wallsCount, size, profileMode);
             mazeWindow.printMaze();
+
         }
-
     }
-
 }
