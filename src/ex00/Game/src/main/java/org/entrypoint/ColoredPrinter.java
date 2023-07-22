@@ -13,13 +13,17 @@ public class ColoredPrinter {
         OBSTACLE
     }
 
-    private PropertiesParser propertiesParser = new PropertiesParser();
+    private PropertiesParser propertiesParser;
     private Attribute enemyColor;
     private Attribute playerColor;
     private Attribute wallsColor;
     private Attribute goalColor;
     private Attribute emptyColor;
 
+
+    public ColoredPrinter(String path) {
+        propertiesParser = new PropertiesParser(path);
+    }
 
     public void showGame(Cell[][] field) {
         fillAttributes();

@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesParser {
+    private String filePath = new String();
+
     private String enemySymbol;
     private String playerSymbol;
     private String wallSymbol;
@@ -17,6 +19,10 @@ public class PropertiesParser {
     private String wallColor;
     private String goalColor;
     private String emptyColor;
+
+    public PropertiesParser(String path) {
+        filePath = path;
+    }
 
     public void getValues() {
         System.out.println("enemy_symbol " + enemySymbol);
@@ -73,8 +79,7 @@ public class PropertiesParser {
 
     public void getProperties() {
         Properties properties = new Properties();
-        try (InputStream input = new FileInputStream
-                ("/Users/verenach/IdeaProjects/Java_Bootcamp.Team00-1/src/ex00/Game/src/main/resources/application-production.properties")) {
+        try (InputStream input = new FileInputStream(filePath.toString())) {
             properties.load(input);
             enemySymbol = properties.getProperty("enemy.char").trim();
             playerSymbol = properties.getProperty("player.char").trim();

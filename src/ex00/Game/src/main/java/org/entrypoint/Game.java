@@ -13,7 +13,11 @@ public class Game {
                 parse(args);
         ;
         gameParameters.run();
-        ColoredPrinter game = new ColoredPrinter();
+        String filePath = new String();
+        if (gameParameters.getProfileMode().equals("production")) {
+            filePath = "src/ex00/Game/src/main/resources/application-production.properties";
+        }
+        ColoredPrinter game = new ColoredPrinter(filePath);
         ColoredPrinter.Cell[][] example = new ColoredPrinter.Cell[5][5];
         example[0][0] = ColoredPrinter.Cell.EMPTY;
         example[0][1] = ColoredPrinter.Cell.PLAYER;
@@ -54,6 +58,10 @@ public class Game {
         private static int size;
         @Parameter(names = {"--profile"})
         private static String profileMode;
+
+        public String getProfileMode() {
+            return profileMode;
+        }
 
         public static void run() {
             ShowMaze mazeWindow =
