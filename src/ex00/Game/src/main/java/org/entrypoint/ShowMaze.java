@@ -1,8 +1,4 @@
-package ex00.Game;
-
-import com.diogonunes.jcolor.Ansi;
-import com.diogonunes.jcolor.Attribute;
-
+package src.main.java.org.entrypoint;
 
 public class ShowMaze {
     private int enemiesCount;

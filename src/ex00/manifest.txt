@@ -1,1 +1,0 @@
-Main-Class: ex00.Game.Game

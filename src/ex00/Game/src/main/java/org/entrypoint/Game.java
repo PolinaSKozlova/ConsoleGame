@@ -1,4 +1,4 @@
-package ex00.Game;
+package src.main.java.org.entrypoint;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
@@ -31,6 +31,7 @@ public class Game {
             ShowMaze mazeWindow =
                     new ShowMaze(enemiesCount, wallsCount, size, profileMode);
             mazeWindow.printMaze();
+
 
         }
     }
