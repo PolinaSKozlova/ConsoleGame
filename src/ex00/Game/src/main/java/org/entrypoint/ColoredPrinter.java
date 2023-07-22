@@ -2,16 +2,17 @@ package org.entrypoint;
 
 import com.diogonunes.jcolor.Ansi;
 import com.diogonunes.jcolor.Attribute;
+import org.logic.Cell;
 
 public class ColoredPrinter {
 
-    public enum Cell {
-        EMPTY,
-        PLAYER,
-        ENEMY,
-        TARGET,
-        OBSTACLE
-    }
+//    public enum Cell {
+//        EMPTY,
+//        PLAYER,
+//        ENEMY,
+//        TARGET,
+//        OBSTACLE
+//    }
 
     private PropertiesParser propertiesParser;
     private Attribute enemyColor;
@@ -96,4 +97,5 @@ public class ColoredPrinter {
                 return Attribute.BRIGHT_WHITE_BACK();
         }
     }
+    
 }
