@@ -55,9 +55,6 @@ public class Game {
         }
 
         public static void run() {
-            ShowMaze mazeWindow =
-                    new ShowMaze(enemiesCount, wallsCount, size, profileMode);
-            mazeWindow.printMaze();
 
 
         }
