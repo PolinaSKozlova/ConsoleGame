@@ -1,0 +1,28 @@
+package ex00.Game;
+
+import com.diogonunes.jcolor.Ansi;
+import com.diogonunes.jcolor.Attribute;
+
+
+public class ShowMaze {
+    private int enemiesCount;
+    private int wallsCount;
+    private int size;
+    private String profileMode;
+
+    public ShowMaze(int enemiesCount,
+                    int wallsCount,
+                    int size,
+                    String profileMode) {
+        this.enemiesCount = enemiesCount;
+        this.wallsCount = wallsCount;
+        this.size = size;
+        this.profileMode = profileMode;
+    }
+
+    public void showMaze() {
+
+    }
+
+
+}
