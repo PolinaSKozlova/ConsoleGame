@@ -1,4 +1,4 @@
-package src.main.java.org.entrypoint;
+package org.entrypoint;
 
 public class ShowMaze {
     private int enemiesCount;

@@ -1,4 +1,4 @@
-package src.main.java.org.entrypoint;
+package org.entrypoint;
 
 import com.diogonunes.jcolor.Ansi;
 import com.diogonunes.jcolor.Attribute;
@@ -13,15 +13,17 @@ public class ColoredPrinter {
         OBSTACLE
     }
 
-    private PropertiesParser propertiesParser;
+    private PropertiesParser propertiesParser = new PropertiesParser();
     private Attribute enemyColor;
     private Attribute playerColor;
     private Attribute wallsColor;
     private Attribute goalColor;
     private Attribute emptyColor;
 
+
     public void showGame(Cell[][] field) {
         fillAttributes();
+        propertiesParser.getValues();
         for (int i = 0; i < field.length; ++i) {
             for (int j = 0; j < field[i].length; ++j) {
                 Cell pixel = field[i][j];
@@ -77,7 +79,7 @@ public class ColoredPrinter {
             case "MAGENTA":
                 return Attribute.MAGENTA_BACK();
             case "YELLOW":
-                return Attribute.YELLOW_BACK();
+                return Attribute.BRIGHT_YELLOW_BACK();
             case "BRIGHT_RED":
                 return Attribute.BRIGHT_RED_BACK();
             case "BRIGHT_GREEN":
@@ -86,10 +88,8 @@ public class ColoredPrinter {
                 return Attribute.BRIGHT_BLUE_BACK();
             case "BRIGHT_BLACK":
                 return Attribute.BRIGHT_BLACK_BACK();
-            case "BRIGHT_WHITE":
-                return Attribute.BRIGHT_WHITE_BACK();
             default:
-                return Attribute.WHITE_BACK();
+                return Attribute.BRIGHT_WHITE_BACK();
         }
     }
 }

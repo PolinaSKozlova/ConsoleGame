@@ -1,4 +1,4 @@
-package src.main.java.org.entrypoint;
+package org.entrypoint;
 
 
 import java.io.FileInputStream;
@@ -74,18 +74,22 @@ public class PropertiesParser {
     public void getProperties() {
         Properties properties = new Properties();
         try (InputStream input = new FileInputStream
-                ("/Users/verenach/IdeaProjects/Game/src/main/resources/application-production.properties")) {
+                ("/Users/verenach/IdeaProjects/Java_Bootcamp.Team00-1/src/ex00/Game/src/main/resources/application-production.properties")) {
             properties.load(input);
-            enemySymbol = properties.getProperty("enemy.char");
-            playerSymbol = properties.getProperty("player.char");
-            wallSymbol = properties.getProperty("wall.char");
-            goalSymbol = properties.getProperty("goal.char");
-            emptySymbol = properties.getProperty("empty.char");
-            enemyColor = properties.getProperty("enemy.color");
-            playerColor = properties.getProperty("player.color");
-            wallColor = properties.getProperty("wall.color");
-            goalColor = properties.getProperty("goal.color");
-            emptyColor = properties.getProperty("empty.color");
+            enemySymbol = properties.getProperty("enemy.char").trim();
+            playerSymbol = properties.getProperty("player.char").trim();
+            wallSymbol = properties.getProperty("wall.char").trim();
+            goalSymbol = properties.getProperty("goal.char").trim();
+            if (!properties.getProperty("empty.char").equals("")) {
+                emptySymbol = properties.getProperty("empty.char").trim();
+            } else {
+                emptySymbol = " ";
+            }
+            enemyColor = properties.getProperty("enemy.color").trim();
+            playerColor = properties.getProperty("player.color").trim();
+            wallColor = properties.getProperty("wall.color").trim();
+            goalColor = properties.getProperty("goal.color").trim();
+            emptyColor = properties.getProperty("empty.color").trim();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
