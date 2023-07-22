@@ -59,6 +59,18 @@ public class Game {
         @Parameter(names = {"--profile"})
         private static String profileMode;
 
+        public static int getEnemiesCount() {
+            return enemiesCount;
+        }
+
+        public static int getSize() {
+            return size;
+        }
+
+        public static int getWallsCount() {
+            return wallsCount;
+        }
+
         public String getProfileMode() {
             return profileMode;
         }
