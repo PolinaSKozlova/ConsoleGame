@@ -20,8 +20,11 @@ public class ShowMaze {
         this.profileMode = profileMode;
     }
 
-    public void showMaze() {
-
+    public void printMaze() {
+        System.out.println("enemiesCount " + enemiesCount);
+        System.out.println("wallsCount " + wallsCount);
+        System.out.println("size " + size);
+        System.out.println("profileMode " + profileMode);
     }
 
 

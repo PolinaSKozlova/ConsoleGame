@@ -6,12 +6,13 @@ import com.beust.jcommander.Parameters;
 
 public class Game {
     public static void main(String[] args) {
-        Args gameParametres = new Args();
+        Args gameParameters = new Args();
         JCommander.newBuilder().
-                addObject(gameParametres).
+                addObject(gameParameters).
                 build().
-                parse(args); ;
-        gameParametres.run();
+                parse(args);
+        ;
+        gameParameters.run();
     }
 
     @Parameters(separators = "=")
@@ -28,7 +29,10 @@ public class Game {
 
         public static void run() {
             ShowMaze mazeWindow =
-                    new ShowMaze(enemiesCount, wallsCount, size, profileMode);}
+                    new ShowMaze(enemiesCount, wallsCount, size, profileMode);
+            mazeWindow.printMaze();
+        }
+
     }
 
 }
