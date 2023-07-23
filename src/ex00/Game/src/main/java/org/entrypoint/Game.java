@@ -15,7 +15,6 @@ public class Game {
                 addObject(gameParameters).
                 build().
                 parse(args);
-        ;
         gameParameters.run();
     }
 
@@ -50,9 +49,9 @@ public class Game {
         public static void run() {
             String filePath = new String();
             if (profileMode.equals("production")) {
-//            filePath = File.separator + "resources" + File.separator +
-//                    "application-" + gameParameters +".properties";
-                filePath = "src/ex00/Game/src/main/resources/application-production.properties";
+            filePath = File.separator + "resources" + File.separator +
+                    "application-" + profileMode +".properties";
+//                filePath = "src/ex00/Game/src/main/resources/application-production.properties";
             }
             ShowMaze game = new ShowMaze(enemiesCount, wallsCount, size,
                     filePath);

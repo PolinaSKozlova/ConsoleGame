@@ -2,7 +2,7 @@ package org.logic;
 
 import java.util.*;
 
-import org.logic.Coordinate;
+
 import org.logic.enums.Cell;
 
 public class ChaseLogic {

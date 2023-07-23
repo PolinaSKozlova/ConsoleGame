@@ -79,7 +79,8 @@ public class PropertiesParser {
 
     public void getProperties() {
         Properties properties = new Properties();
-        try (InputStream input = new FileInputStream(filePath.toString())) {
+//        try (InputStream input = new FileInputStream(filePath.toString())) {
+        try (InputStream input = this.getClass().getResourceAsStream(filePath)) {
             properties.load(input);
             enemySymbol = properties.getProperty("enemy.char").trim();
             playerSymbol = properties.getProperty("player.char").trim();

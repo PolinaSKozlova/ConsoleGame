@@ -1,6 +1,8 @@
 package org.entrypoint;
 
-import org.entrypoint.enums.Direction;
+import org.logic.enums.*;
+import org.logic.Coordinate;
+import org.logic.Field;
 
 public class ShowMaze {
     private Field field;

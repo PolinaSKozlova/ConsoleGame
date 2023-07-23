@@ -1,11 +1,9 @@
-package org.entrypoint;
+package org.logic;
 
 import java.util.*;
 
-import org.entrypoint.enums.Direction;
-import org.entrypoint.enums.Cell;
-import org.entrypoint.Coordinate;
-import org.logic.ChaseLogic;
+import org.logic.enums.*;
+
 
 
 public class Field {
