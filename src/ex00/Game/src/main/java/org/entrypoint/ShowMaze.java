@@ -1,27 +1,40 @@
 package org.entrypoint;
 
+import org.entrypoint.enums.Direction;
+
 public class ShowMaze {
-    private int enemiesCount;
-    private int wallsCount;
-    private int size;
-    private String profileMode;
+    private Field field;
+    private ColoredPrinter fieldPrinter;
 
-    public ShowMaze(int enemiesCount,
-                    int wallsCount,
-                    int size,
-                    String profileMode) {
-        this.enemiesCount = enemiesCount;
-        this.wallsCount = wallsCount;
-        this.size = size;
-        this.profileMode = profileMode;
+    public ShowMaze(int enemiesCount, int wallsCount, int size,
+                    String filePath) {
+        fieldPrinter = new ColoredPrinter(filePath);
+        field = new Field(size, wallsCount, enemiesCount);
     }
 
-    public void printMaze() {
-        System.out.println("enemiesCount " + enemiesCount);
-        System.out.println("wallsCount " + wallsCount);
-        System.out.println("size " + size);
-        System.out.println("profileMode " + profileMode);
+    public void runGame(){
+        fieldPrinter.showGame(field.getCells());
+        while(true){
+            playRound();
+        }
     }
 
+    private void playRound() {
+        // ход игрока
+        boolean playerMoved = false;
+        while (!playerMoved) {
+            // здесь надо считать направление для игрока
+            // или 9 чтобы сдаться
+            Direction direction = Direction.RIGHT;
+            playerMoved = field.playerTurn(direction);
+        }
 
+        fieldPrinter.showGame(field.getCells());
+        // ходы врагов
+        for (Coordinate enemy : field.getEnemies()) {
+            // для dev режима надо добавить ожидание ввода 8 внутри цикла
+            field.enemyTurn(enemy);
+            fieldPrinter.showGame(field.getCells());
+        }
+    }
 }

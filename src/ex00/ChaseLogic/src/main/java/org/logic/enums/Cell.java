@@ -1,4 +1,4 @@
-package org.logic;
+package org.logic.enums;
 
 public enum Cell {
     EMPTY,
@@ -6,5 +6,4 @@ public enum Cell {
     ENEMY,
     TARGET,
     OBSTACLE
-
 }

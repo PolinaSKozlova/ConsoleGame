@@ -16,19 +16,7 @@ public class Game {
                 build().
                 parse(args);
         ;
-//        gameParameters.run();
-        String filePath = new String();
-//        if (gameParameters.getProfileMode().equals("production")) {
-//            filePath = File.separator + "resources" + File.separator +
-//                    "application-" + gameParameters +".properties";
-            filePath = "src/ex00/Game/src/main/resources/application-production.properties";
-//        }
-        ColoredPrinter game = new ColoredPrinter(filePath);
-        Field field = new Field(gameParameters.getSize(),
-                gameParameters.getWallsCount(),
-                gameParameters.getEnemiesCount()
-                );
-        game.showGame(field.getCells());
+        gameParameters.run();
     }
 
     @Parameters(separators = "=")
@@ -60,8 +48,15 @@ public class Game {
         }
 
         public static void run() {
-
-
+            String filePath = new String();
+            if (profileMode.equals("production")) {
+//            filePath = File.separator + "resources" + File.separator +
+//                    "application-" + gameParameters +".properties";
+                filePath = "src/ex00/Game/src/main/resources/application-production.properties";
+            }
+            ShowMaze game = new ShowMaze(enemiesCount, wallsCount, size,
+                    filePath);
+            game.runGame();
         }
     }
 }

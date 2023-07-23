@@ -1,4 +1,4 @@
-package org.logic;
+package org.entrypoint;
 
 import java.util.Objects;
 

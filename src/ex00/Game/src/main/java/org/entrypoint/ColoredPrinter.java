@@ -2,7 +2,7 @@ package org.entrypoint;
 
 import com.diogonunes.jcolor.Ansi;
 import com.diogonunes.jcolor.Attribute;
-import org.logic.Cell;
+import org.entrypoint.enums.Cell;
 
 public class ColoredPrinter {
 

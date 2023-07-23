@@ -2,8 +2,23 @@ package org.logic;
 
 import java.util.*;
 
+import org.logic.Coordinate;
+import org.logic.enums.Cell;
+
 public class ChaseLogic {
-    public static List<Coordinate> findPath(Cell[][] cells, Coordinate start,
+    public static Coordinate enemyStep(Cell[][] cells,
+                                       Coordinate start,
+                                       Coordinate end) {
+        List<Coordinate> path = findPath(cells, start, end);
+        if ((path != null) && (path.size() >= 2)) {
+            return path.get(1);
+        } else {
+            return start;
+        }
+    }
+
+    public static List<Coordinate> findPath(Cell[][] cells,
+                                            Coordinate start,
                                             Coordinate end) {
         Queue<Coordinate> queue = new LinkedList<>();
         Map<Coordinate, Coordinate> parentMap = new HashMap<>();
@@ -28,42 +43,39 @@ public class ChaseLogic {
             }
         }
 
-        return null;
+        List<Coordinate> path = new ArrayList<>();
+        path.add(start);
+        return path;
     }
 
     private static List<Coordinate> getNeighbors(Cell[][] cells,
                                                  Coordinate coordinate) {
         List<Coordinate> neighbors = new ArrayList<>();
 
-        int x = coordinate.getColumn();
-        int y = coordinate.getRow();
         int size = cells.length;
 
+        Coordinate[] directions = {coordinate.up(),
+                coordinate.down(),
+                coordinate.left(),
+                coordinate.right()};
 
-        // Check right neighbor
-        if ((x + 1 < size) && (cells[x + 1][y] != Cell.OBSTACLE)) {
-            neighbors.add(new Coordinate(y, x + 1));
+        for (Coordinate direction : directions) {
+            if (direction.isValidRange(0, size)) {
+                Cell cell = cellType(cells, direction);
+                if ((cell != Cell.OBSTACLE) && (cell != Cell.TARGET)) {
+                    neighbors.add(direction);
+                }
+            }
         }
 
-        // Check left neighbor
-        if ((x - 1 >= 0) && (cells[x - 1][y] != Cell.OBSTACLE)) {
-            neighbors.add(new Coordinate(y, x - 1));
-        }
-
-        // Check bottom neighbor
-        if ((y + 1 < size) && (cells[x][y + 1] != Cell.OBSTACLE)) {
-            neighbors.add(new Coordinate(y + 1, x));
-        }
-
-        // Check top neighbor
-        if ((y - 1 >= 0) && (cells[x][y - 1] != Cell.OBSTACLE)) {
-            neighbors.add(new Coordinate(y - 1, x));
-        }
         return neighbors;
     }
 
-    private static List<Coordinate> buildPath(Map<Coordinate, Coordinate> parentMap,
-                                              Coordinate start, Coordinate end) {
+    private static List<Coordinate> buildPath(
+            Map<Coordinate, Coordinate> parentMap,
+            Coordinate start,
+            Coordinate end) {
+
         List<Coordinate> path = new ArrayList<>();
         Coordinate current = end;
 
@@ -72,8 +84,12 @@ public class ChaseLogic {
             current = parentMap.get(current);
         }
 
+        path.add(start);
         Collections.reverse(path);
         return path;
     }
 
+    private static Cell cellType(Cell[][] cells, Coordinate coordinate) {
+        return cells[coordinate.getRow()][coordinate.getColumn()];
+    }
 }
