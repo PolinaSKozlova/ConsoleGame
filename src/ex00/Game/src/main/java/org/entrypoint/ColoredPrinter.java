@@ -6,14 +6,6 @@ import org.logic.Cell;
 
 public class ColoredPrinter {
 
-//    public enum Cell {
-//        EMPTY,
-//        PLAYER,
-//        ENEMY,
-//        TARGET,
-//        OBSTACLE
-//    }
-
     private PropertiesParser propertiesParser;
     private Attribute enemyColor;
     private Attribute playerColor;

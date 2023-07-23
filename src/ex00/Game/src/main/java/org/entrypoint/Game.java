@@ -6,6 +6,8 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+import java.io.File;
+
 public class Game {
     public static void main(String[] args) {
         Args gameParameters = new Args();
@@ -14,15 +16,18 @@ public class Game {
                 build().
                 parse(args);
         ;
-        gameParameters.run();
+//        gameParameters.run();
         String filePath = new String();
-        if (gameParameters.getProfileMode().equals("production")) {
+//        if (gameParameters.getProfileMode().equals("production")) {
+//            filePath = File.separator + "resources" + File.separator +
+//                    "application-" + gameParameters +".properties";
             filePath = "src/ex00/Game/src/main/resources/application-production.properties";
-        }
+//        }
         ColoredPrinter game = new ColoredPrinter(filePath);
         Field field = new Field(gameParameters.getSize(),
-                gameParameters.getEnemiesCount(),
-                gameParameters.getWallsCount());
+                gameParameters.getWallsCount(),
+                gameParameters.getEnemiesCount()
+                );
         game.showGame(field.getCells());
     }
 

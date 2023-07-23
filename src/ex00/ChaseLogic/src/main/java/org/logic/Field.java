@@ -9,7 +9,7 @@ public class Field {
     private Cell[][] cells;
     private Coordinate player;
     private Coordinate target;
-    private List<Coordinate> enemies;
+    private List<Coordinate> enemies = new ArrayList<>();
 
     public Field(int size, int obstaclesCount, int enemiesCount) {
         if (size < 5) {
