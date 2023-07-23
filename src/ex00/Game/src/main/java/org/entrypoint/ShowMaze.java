@@ -2,18 +2,20 @@ package org.entrypoint;
 
 import org.logic.IllegalParametersException;
 import org.logic.enums.*;
-import org.logic.Coordinate;
 import org.logic.Field;
+import org.entrypoint.Game.Args;
 
 import java.util.Scanner;
 
 public class ShowMaze {
     private Field field;
     private ColoredPrinter fieldPrinter;
+    private String mode;
 
     public ShowMaze(int enemiesCount, int wallsCount, int size,
-                    String filePath) {
+                    String filePath,String profileMode) {
         fieldPrinter = new ColoredPrinter(filePath);
+        mode = profileMode;
         try {
             field = new Field(size, wallsCount, enemiesCount);
         } catch (IllegalParametersException e) {
@@ -33,13 +35,11 @@ public class ShowMaze {
     private void playRound() {
 
         Scanner scanner = new Scanner(System.in);
-        // ход игрока
+
         boolean playerMoved = false;
         while (!playerMoved) {
             Direction direction = Direction.NONE;
 
-            // здесь надо считать направление для игрока
-            // или 9 чтобы сдаться
             switch (getInput(scanner)) {
                 case 'W':
                     direction = Direction.UP;
@@ -65,21 +65,17 @@ public class ShowMaze {
         clearConsole();
         fieldPrinter.showGame(field.getCells());
 
-        // ходы врагов
         for (int i = 0; i < field.getEnemies().size(); ++i) {
-            field.enemyTurn(field.getEnemies().get(i));
+
+            if(mode.equals("development")){
+                while (getInput(scanner) != '8') {
+                }
+            }
+
+            field.enemyTurn(field.getEnemies().poll());
             clearConsole();
             fieldPrinter.showGame(field.getCells());
-
         }
-
-//        for (Coordinate enemy : field.getEnemies()) {
-//            // для dev режима надо добавить ожидание ввода 8 внутри цикла
-//            System.out.println("Enemy: " + enemy);
-//            field.enemyTurn(enemy);
-//            clearConsole();
-//            fieldPrinter.showGame(field.getCells());
-//        }
     }
 
     private static char getInput(Scanner scanner) {

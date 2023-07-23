@@ -52,7 +52,7 @@ public class Game {
                     "application-" + profileMode +".properties";
 
             ShowMaze game = new ShowMaze(enemiesCount, wallsCount, size,
-                    filePath);
+                    filePath, profileMode);
             game.runGame();
         }
     }

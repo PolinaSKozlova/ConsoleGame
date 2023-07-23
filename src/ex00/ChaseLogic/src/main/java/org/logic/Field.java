@@ -11,11 +11,11 @@ public class Field {
     private Coordinate player;
     private Coordinate target;
 
-    public List<Coordinate> getEnemies() {
+    public Queue<Coordinate> getEnemies() {
         return enemies;
     }
 
-    private List<Coordinate> enemies;
+    private Queue<Coordinate> enemies;
 
     public Field(int size, int obstaclesCount, int enemiesCount)
             throws IllegalParametersException {
@@ -34,8 +34,7 @@ public class Field {
 
         this.size = size;
         this.cells = new Cell[size][size];
-        enemies = new ArrayList<>();
-//        initializeField();
+        enemies = new LinkedList<>();
 
         do {
             initializeField();
@@ -53,26 +52,23 @@ public class Field {
     }
 
     public void enemyTurn(Coordinate enemy) {
-        Coordinate oldPos = enemy;
+//        Coordinate oldPos = enemy;
         Coordinate newPos = ChaseLogic.enemyStep(this.cells, enemy, player);
         if (newPos == null) {
-            System.out.println("Enemy lost!");
             return;
         }
-        if (newPos.equals(oldPos)) {
-            System.out.println("Enemy stop!");
+        if (newPos.equals(enemy)) {
             return;
         }
         if (newPos.equals(player)) {
             System.out.println("You lose! =(");
             System.exit(0);
         }
-        this.cells[oldPos.getRow()][oldPos.getColumn()] = Cell.EMPTY;
+        this.cells[enemy.getRow()][enemy.getColumn()] = Cell.EMPTY;
         this.cells[newPos.getRow()][newPos.getColumn()] = Cell.ENEMY;
 
         this.enemies.remove(enemy);
         this.enemies.add(newPos);
-        System.out.println("Enemy move!");
     }
 
     public boolean playerTurn(Direction direction) {
