@@ -80,8 +80,9 @@ public class PropertiesParser {
             wallColor = properties.getProperty("wall.color").trim();
             goalColor = properties.getProperty("goal.color").trim();
             emptyColor = properties.getProperty("empty.color").trim();
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.exit(-1);
         }
     }
 }

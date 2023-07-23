@@ -18,17 +18,18 @@ public class Field {
 
     private List<Coordinate> enemies;
 
-    public Field(int size, int obstaclesCount, int enemiesCount) {
+    public Field(int size, int obstaclesCount, int enemiesCount)
+            throws IllegalParametersException {
         if (size < 5) {
-            throw new IllegalArgumentException(
+            throw new IllegalParametersException(
                     "Field size must be at least 5");
         }
         if (size > 50) {
-            throw new IllegalArgumentException(
+            throw new IllegalParametersException(
                     "Field size must be less than 50");
         }
         if ((size * size) <= (2 + obstaclesCount + enemiesCount)) {
-            throw new IllegalArgumentException(
+            throw new IllegalParametersException(
                     "Input data is incorrect: no empty space");
         }
 

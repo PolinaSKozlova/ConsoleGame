@@ -45,8 +45,12 @@ public class Game {
         }
 
         public static void run() {
+            if(profileMode.equals("")){
+                profileMode = "production";
+            }
             String filePath = File.separator + "resources" + File.separator +
                     "application-" + profileMode +".properties";
+
             ShowMaze game = new ShowMaze(enemiesCount, wallsCount, size,
                     filePath);
             game.runGame();
