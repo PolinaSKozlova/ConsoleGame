@@ -11,8 +11,10 @@ public class ChaseLogic {
                                        Coordinate end) {
         List<Coordinate> path = findPath(cells, start, end);
         if ((path != null) && (path.size() >= 2)) {
+            System.out.println("Enemy must run");
             return path.get(1);
         } else {
+            System.out.println("Enemy blocked");
             return start;
         }
     }
@@ -31,6 +33,7 @@ public class ChaseLogic {
             Coordinate current = queue.poll();
 
             if (current == end) {
+                System.out.println("Path found!");
                 return buildPath(parentMap, start, end);
             }
 
@@ -45,6 +48,7 @@ public class ChaseLogic {
 
         List<Coordinate> path = new ArrayList<>();
         path.add(start);
+        System.out.println("Path not found!");
         return path;
     }
 

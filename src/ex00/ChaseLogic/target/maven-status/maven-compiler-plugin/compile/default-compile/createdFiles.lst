@@ -1,0 +1,6 @@
+org/logic/Coordinate.class
+org/logic/ChaseLogic.class
+org/logic/enums/Cell.class
+org/logic/Field.class
+org/logic/enums/Direction.class
+org/logic/Field$1.class
