@@ -5,7 +5,6 @@ import java.util.*;
 import org.logic.enums.*;
 
 
-
 public class Field {
     private final int size;
     private Cell[][] cells;
@@ -54,9 +53,11 @@ public class Field {
         Coordinate oldPos = enemy;
         Coordinate newPos = ChaseLogic.enemyStep(this.cells, enemy, player);
         if (newPos == null) {
+            System.out.println("Enemy lost!");
             return;
         }
         if (newPos.equals(oldPos)) {
+            System.out.println("Enemy stop!");
             return;
         }
         if (newPos.equals(player)) {
@@ -68,6 +69,7 @@ public class Field {
 
         this.enemies.remove(oldPos);
         this.enemies.add(newPos);
+        System.out.println("Enemy move!");
     }
 
     public boolean playerTurn(Direction direction) {
