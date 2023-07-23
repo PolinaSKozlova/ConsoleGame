@@ -8,8 +8,6 @@ import org.logic.enums.*;
 
 public class Field {
     private final int size;
-    private final int obstaclesCount;
-    private final int enemiesCount;
     private Cell[][] cells;
     private Coordinate player;
     private Coordinate target;
@@ -35,9 +33,6 @@ public class Field {
         }
 
         this.size = size;
-        this.obstaclesCount = obstaclesCount;
-        this.enemiesCount = enemiesCount;
-
         this.cells = new Cell[size][size];
         enemies = new ArrayList<>();
         initializeField();

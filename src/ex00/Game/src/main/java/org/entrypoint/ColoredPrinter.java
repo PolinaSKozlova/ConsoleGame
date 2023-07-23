@@ -20,7 +20,6 @@ public class ColoredPrinter {
 
     public void showGame(Cell[][] field) {
         fillAttributes();
-        propertiesParser.getValues();
         for (int i = 0; i < field.length; ++i) {
             for (int j = 0; j < field[i].length; ++j) {
                 Cell pixel = field[i][j];

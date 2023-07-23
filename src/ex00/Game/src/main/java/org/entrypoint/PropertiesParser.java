@@ -1,7 +1,5 @@
 package org.entrypoint;
 
-
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -22,19 +20,6 @@ public class PropertiesParser {
 
     public PropertiesParser(String path) {
         filePath = path;
-    }
-
-    public void getValues() {
-        System.out.println("enemy_symbol " + enemySymbol);
-        System.out.println("player_symbol " + playerSymbol);
-        System.out.println("wall_symbol " + wallSymbol);
-        System.out.println("goal_symbol " + goalSymbol);
-        System.out.println("empty_symbol " + emptySymbol);
-        System.out.println("enemy_color " + enemyColor);
-        System.out.println("player_color " + playerColor);
-        System.out.println("wall_color " + wallColor);
-        System.out.println("goal_color " + goalColor);
-        System.out.println("empty_color " + emptyColor);
     }
 
     public String getEmptySymbol() {
@@ -79,7 +64,6 @@ public class PropertiesParser {
 
     public void getProperties() {
         Properties properties = new Properties();
-//        try (InputStream input = new FileInputStream(filePath.toString())) {
         try (InputStream input = this.getClass().getResourceAsStream(filePath)) {
             properties.load(input);
             enemySymbol = properties.getProperty("enemy.char").trim();
