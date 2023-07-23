@@ -3,7 +3,7 @@ package org.entrypoint;
 import org.logic.IllegalParametersException;
 import org.logic.enums.*;
 import org.logic.Field;
-import org.entrypoint.Game.Args;
+
 
 import java.util.Scanner;
 
