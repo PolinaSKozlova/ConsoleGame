@@ -1,5 +1,6 @@
 package org.entrypoint;
 
+import org.logic.IllegalParametersException;
 import org.logic.enums.*;
 import org.logic.Coordinate;
 import org.logic.Field;
@@ -13,7 +14,13 @@ public class ShowMaze {
     public ShowMaze(int enemiesCount, int wallsCount, int size,
                     String filePath) {
         fieldPrinter = new ColoredPrinter(filePath);
-        field = new Field(size, wallsCount, enemiesCount);
+        try {
+            field = new Field(size, wallsCount, enemiesCount);
+        } catch (IllegalParametersException e) {
+            System.out.println(e.getMessage());;
+            System.exit(-1);
+        }
+
     }
 
     public void runGame() {
