@@ -32,8 +32,8 @@ public class ChaseLogic {
         while (!queue.isEmpty()) {
             Coordinate current = queue.poll();
 
-            if (current == end) {
-                System.out.println("Path found!");
+            if (current.equals(end)) {
+//                System.out.println("Path found!");
                 return buildPath(parentMap, start, end);
             }
 
@@ -48,7 +48,7 @@ public class ChaseLogic {
 
         List<Coordinate> path = new ArrayList<>();
         path.add(start);
-        System.out.println("Path not found!");
+//        System.out.println("Path not found!");
         return path;
     }
 
@@ -83,7 +83,7 @@ public class ChaseLogic {
         List<Coordinate> path = new ArrayList<>();
         Coordinate current = end;
 
-        while (current != start) {
+        while (!current.equals(start)) {
             path.add(current);
             current = parentMap.get(current);
         }

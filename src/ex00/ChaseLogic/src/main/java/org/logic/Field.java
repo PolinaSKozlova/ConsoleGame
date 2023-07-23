@@ -35,15 +35,17 @@ public class Field {
         this.size = size;
         this.cells = new Cell[size][size];
         enemies = new ArrayList<>();
-        initializeField();
+//        initializeField();
 
         do {
+            initializeField();
             setObject(obstaclesCount, Cell.OBSTACLE);
             setObject(1, Cell.PLAYER);
             setObject(1, Cell.TARGET);
-            setObject(enemiesCount, Cell.ENEMY);
-        } while (checkPathForPlayer());
 
+        } while (!checkPathForPlayer());
+
+        setObject(enemiesCount, Cell.ENEMY);
     }
 
     public Cell[][] getCells() {
@@ -68,7 +70,7 @@ public class Field {
         this.cells[oldPos.getRow()][oldPos.getColumn()] = Cell.EMPTY;
         this.cells[newPos.getRow()][newPos.getColumn()] = Cell.ENEMY;
 
-        this.enemies.remove(oldPos);
+        this.enemies.remove(enemy);
         this.enemies.add(newPos);
         System.out.println("Enemy move!");
     }

@@ -62,16 +62,24 @@ public class ShowMaze {
             }
             playerMoved = field.playerTurn(direction);
         }
-
+        clearConsole();
         fieldPrinter.showGame(field.getCells());
 
         // ходы врагов
-        for (Coordinate enemy : field.getEnemies()) {
-            // для dev режима надо добавить ожидание ввода 8 внутри цикла
-            System.out.println("Enemy: " + enemy);
-            field.enemyTurn(enemy);
+        for (int i = 0; i < field.getEnemies().size(); ++i) {
+            field.enemyTurn(field.getEnemies().get(i));
+            clearConsole();
             fieldPrinter.showGame(field.getCells());
+
         }
+
+//        for (Coordinate enemy : field.getEnemies()) {
+//            // для dev режима надо добавить ожидание ввода 8 внутри цикла
+//            System.out.println("Enemy: " + enemy);
+//            field.enemyTurn(enemy);
+//            clearConsole();
+//            fieldPrinter.showGame(field.getCells());
+//        }
     }
 
     private static char getInput(Scanner scanner) {
@@ -82,5 +90,9 @@ public class ShowMaze {
             result = rawInputData.charAt(0);
         }
         return result;
+    }
+    private static void clearConsole(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
