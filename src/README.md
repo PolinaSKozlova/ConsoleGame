@@ -29,24 +29,20 @@ Example of a generated map:
 **Настройки игры**:
 1. Размер поля, число стен и врагов вводятся в параметрах строки:<br>
 `$ java -jar game.jar --enemiesCount=10 --wallsCount=10 --size=30 --profile=production`
-2. A check shall be made whether it is possible to put the specified number of enemies and obstacles on the map of given size. If input data is incorrect, the program shall throw an unchecked IllegalParametersException and shut down.
-2. Enemies, obstacles, the player, and the target point are positioned on the field randomly. 
-3. When generating the map, enemies, the player, obstacles, and the target point shall not overlap.
-4. In the beginning of the game, the map must be generated so that the player can reach the target point (the player must not be blocked by walls and map edge in starting position).
-5. To make a move, the player shall enter a number in the console that corresponds to the movement direction A, W, D, S (left, upward, right, downward).
-6. If the player is unable to make a move in the specified direction, another number (direction) shall be entered.
-7. If the player understands in the beginning or middle of the game that the target point is unreachable, they shall end the game by entering 9 (player loses).
-8. Once the player has made a move, it is its enemy's turn to make a move towards the player. 
-9.  In the development mode, each enemy's step shall be confirmed by the player by entering 8.
-10. Upon each a step of any participant, map must be redrawn in the console. In development mode, the map shall be displayed without updating the screen.
-11. Pursuing algorithm shall take account of the target object location in each step.
+1. Должна быть проверка возможно ли размещение врагов и стен на поле заданного размераю Если данные некорректны, выбрасывается исключение.
+2. Враги, стены, игрок  и цель располагаются на поле рандомно. 
+3. При генерации поля враги, стены, игрок и цель не должны перекрывать друг друга.
+4. В начале игры поле должно быть сгенерировано таким образом, чтобы игрок мог достичь цель(не заблокирован стенами или врагами).
+5. Чтобы сделать движение игрок должен ввести A, W, D, S (лево, вперед, право, вниз).
+6. Если игрок не может пройти в выбранном направлении, необходимо ввести доступное направление.
+7. Если игрок понимает, что цель недостижима, он может закончить игру, нажав 9.
+8. После того, как игрок сделал ход враги двигаются в его направлении. 
+9. В режиме разработчика каждый шаг врага должен быть подтвержден путем нажатия 8.
+10. После каждого шага участника консоль обновляется.
+11. Алгоритм преследования должен учитывать местоположение целевого объекта на каждом этапе.
 
-**Architecture requirements**:
-1. Two projects shall be implemented: Game (contains game logic, application entry point, output functionality, etc.) and ChaseLogic (contains pursuing algorithm implementation).
-2. Both are mavenprojects, and ChaseLogic shall be added as a dependency to pom.xml inside Game.
-3. Game.jar archive shall be portable:  JCommander and JCDP must be directly included in the archive. At the same time, all libraries connected to the project shall be declared as maven-dependency. To build such archive, the following plugins shall be used.
 
-It is also necessary to create a configuration file called application-production.properties. In this file, you will specify your application settings. The example of this file is shown below:
+Настройки игры задаются в файле конфигурации, пример файла ниже
 
 enemy.char = X <br>
 player.char = o <br>
@@ -59,8 +55,4 @@ wall.color = MAGENTA <br>
 goal.color = BLUE <br>
 empty.color = YELLOW
 
-This configuration file will be located in resources folder of the launched jar archive.
-
-In addition to that, application-dev.properties file should be implemented. Structure of this file is similar to that of application.properties. Here, you can specify parameters for distinguishing application startup in development mode (for example, different colors/characters for map components).
-
-It is necessary to keep in mind that the program may also be started in other modes. For this purpose, the respective properties file can be added to the source project, and the mode itself is passed via --profile parameter.
+В данном проекте я занималась отрисовкой поля(класс ColoredPrinter, ShowMaze), считыванием данных(класс PropertiesParser) и сборкой проекта. 
