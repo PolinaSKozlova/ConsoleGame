@@ -1,15 +1,8 @@
 # Console Game & Maven
 
-## Surrender, You're Surrounded
+## Сдавайтесь, вы окружены!
 
-
-Do you remember good old Java games? In the early 2000s, they were in each phone. Now Java developers design scalable enterprise systems, but at that time... 
-
-Your objective today is to get a bit nostalgic and implement a game where you run from artificial intelligence entities across a square field. 
-
-The program shall generate a random map with obstacles. Both player and its enemies are located on the map in a random manner. Each map element shall have a certain color.
-
-Example of a generated map:
+Программа рандомом генерирует поле с препятствиями. Игрок и враги расположены на карте случайным образом. Каждый элемент на поле окрашен в определенный цвет.
 
 **Designations**: <br>
 `o` - позиция игрока на карте<br>
